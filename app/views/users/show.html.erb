@@ -1,0 +1,22 @@
+<div style="float: right; margin-right: 20px" <p><a href="/songs">Dashboard</a> | <a href="/sessions/logout" data-method="delete">Logout</a></div>
+
+<h4><%= @user.full_name %>'s Playlist:</h4>
+
+<table>
+	<thead>
+		<tr>
+			<th>Artist</th>
+			<th>Title</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @songs.uniq.each do |s| %>
+			<tr>
+				<td><%= s.artist %></td>
+				<td><a href="/songs/<%= s.id %>"><%= s.title %></a></td>
+				<td><%= s.adds.where(user_id: params[:id]).count %></a></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table><br>

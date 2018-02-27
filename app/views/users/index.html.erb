@@ -1,0 +1,48 @@
+<% if flash[:errors] %>
+	<% flash[:errors].each do |err| %>
+	<p><%= err %></p>
+	<% end %>
+<% end %>
+<div class="wrapper">
+	<div class="reg-box">
+		<h1>Register</h1>
+		<form action="/users" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<p>
+				<label name="first_name">First Name:</label>
+				<input type="text" name="user[first_name]">
+			</p>
+			<p>
+				<label for="last_name">Last Name:</label>
+				<input type="text" name="user[last_name]">
+			</p>
+			<p>
+				<label for="email">Email:</label>
+				<input type="email" name="user[email]">
+			</p>
+			<p>
+				<label name="password">Password:</label>
+				<input type="password" name="user[password]">
+			</p>
+			<p>
+				<label name="password_confirmation">Confirm Password:</label>
+				<input type="password" name="user[password_confirmation]">
+			</p>
+			<input class="button" type="submit" value="Register">
+		</form><br>
+	</div>
+	<div class="login-box">
+		<h1>Login</h1>
+		<form action="/sessions" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<p>
+				<label for="email">Email:</label>
+				<input type="email" name="email">
+			</p>
+				<label for="password">Password:</label>
+				<input type="password" name="password">
+			</p>
+			<input class="button" type="submit" value="Login">
+		</form><br>
+	</div>
+</div>
